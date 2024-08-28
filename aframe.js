@@ -68,9 +68,22 @@ AFRAME.registerComponent('thumbstick-logging',{
   },
   logThumbstick: function (evt) {
     if (evt.detail.y > 0.95) { 
-      var CameraEl = document.querySelector('#you');
-      tmp = CameraEl.object3D.position.x.toString();
-      window.location.href = 'tmp';
+      
+      var panel = document.querySelector('#html-panel');
+      panel.innerHTML = `
+        <a-entity htmlembed position="2.698 -0.039 -3.520">
+          <div class="wrapper">
+            <h1>HAHAHAHAHAHAHAHA</h1>
+            <p>Updated: Check email of the sender carefully!</p>
+            <p>Be very cautious with clicking links.</p>
+            <p>Always verify email sources.</p>
+          </div>
+        </a-entity>
+      `;
+      
+      // var CameraEl = document.querySelector('#you');
+      // tmp = CameraEl.object3D.position.x.toString();
+      // window.location.href = 'https://tmp';
       //CameraEl.object3D.position.set(1, 2, 3);
      }
     // if (evt.detail.y < -0.95) { window.location.href = 'https://www.google.com'; }
