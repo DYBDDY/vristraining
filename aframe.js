@@ -51,8 +51,7 @@ AFRAME.registerComponent('thumbstick-logging',{
     this.el.addEventListener('thumbstickmoved', this.logThumbstick);
   },
   logThumbstick: function (evt) {
-    var avatar = ocument.querySelector("#you");
-    if (evt.detail.y > 0.95) { avatar.object3D.position.set(1, 2, 3);}
+    if (evt.detail.y > 0.95) { window.location.href = 'https://www.google.com';}
     if (evt.detail.y < -0.95) { window.location.href = 'https://www.google.com';}
     if (evt.detail.x < -0.95) { window.location.href = 'https://www.google.com'; }
     if (evt.detail.x > 0.95) { window.location.href = 'https://www.google.com'; }
