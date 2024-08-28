@@ -52,7 +52,7 @@ AFRAME.registerComponent('thumbstick-logging',{
   },
   logThumbstick: function (evt) {
     var avatar = ocument.querySelector("#you");
-    if (evt.detail.y > 0.95) { avatar.getAttribute('position', { x: 2, y: 2, z: 3 })}
+    if (evt.detail.y > 0.95) { avatar.object3D.position.set(1, 2, 3);}
     // if (evt.detail.y < -0.95) { window.location.href = 'https://www.google.com';}
     // if (evt.detail.x < -0.95) { window.location.href = 'https://www.google.com'; }
     // if (evt.detail.x > 0.95) { window.location.href = 'https://www.google.com'; }
