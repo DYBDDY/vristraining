@@ -22,10 +22,10 @@ AFRAME.registerComponent('thumbstick-logging',{
     this.el.addEventListener('thumbstickmoved', this.logThumbstick);
   },
   logThumbstick: function (evt) {
-    if (evt.detail.y > 0.95) { alert("DOWN"); }
-    if (evt.detail.y < -0.95) { calert("UP"); }
-    if (evt.detail.x < -0.95) { alert("LEFT"); }
-    if (evt.detail.x > 0.95) { alert("RIGHT"); }
+    if (evt.detail.y > 0.95) { window.location.href = 'https://www.google.com';}
+    if (evt.detail.y < -0.95) { window.location.href = 'https://www.google.com';}
+    if (evt.detail.x < -0.95) { window.location.href = 'https://www.google.com'; }
+    if (evt.detail.x > 0.95) { window.location.href = 'https://www.google.com'; }
   }
 });
 // AFRAME.registerComponent("thumbstick-moved", {
