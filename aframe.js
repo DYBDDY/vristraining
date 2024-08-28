@@ -75,7 +75,7 @@ AFRAME.registerComponent('thumbstick-logging',{
       strInnerHTML = `
         <a-entity htmlembed position="2.698 -0.039 -3.520">
           <div class="wrapper">
-            <h1>$place$</h1>
+            <h1>$replace$</h1>
             <p>Updated: Check email of the sender carefully!</p>
             <p>Be very cautious with clicking links.</p>
             <p>Always verify email sources.</p>
