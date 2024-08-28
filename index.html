@@ -20,13 +20,13 @@
     <a-entity camera wasd-controls="acceleration: 20" look-controls position="0 1.3 0">
       <a-cursor></a-cursor>
     </a-entity>
-    <a-entity tracked-controls="controller: 0; idPrefix: OpenVR"></a-entity>
+    <a-entity oculus-touch-controls="hand: left"></a-entity>
+    <a-entity oculus-touch-controls="hand: right"></a-entity>
 
 
 
     <a-assets>
-      <a-asset-item id="officeModel"
-        src="./source/testimg/mersus_office.glb"></a-asset-item>
+      <a-asset-item id="officeModel" src="./source/testimg/mersus_office.glb"></a-asset-item>
       <a-asset-item id="officecomputermodel" src="./source/phishing.glb"></a-asset-item>
       <a-asset-item id="printermodel" src="./source/confidential2.glb"></a-asset-item>
     </a-assets>
@@ -55,7 +55,8 @@
       </a-entity>
     </a-entity>
     <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
-    <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
+    <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable"
+      line="color: #118A7E"></a-entity>
 
     <!-- 按鈕 -->
     <a-circle id="show-panel-button" position="-0.327 1.078 -2.960" rotation="0 3.792 0" scale="0.241 0.218 0.562"
