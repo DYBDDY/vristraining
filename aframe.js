@@ -16,52 +16,64 @@ AFRAME.registerComponent("toggle-panel", {
   },
 });
 
-AFRAME.registerComponent("thumbstick-moved", {
-  schema: {
-    distance: { type: "number", default: 0.1 },
-  },
+
+AFRAME.registerComponent('thumbstick-logging',{
   init: function () {
-    var self = this;
-    this.el.addEventListener("thumbstickmoved", function (evt) {
-      var vectors = self.boxEl.getAttribute("position");
-      if (evt.detail.y > 0.95) {
-        console.log("Down");
-        self.boxEl.setAttribute("position", {
-          x: vectors.x,
-          y: vectors.y - self.data.distance,
-          z: vectors.z,
-        });
-      }
-
-      if (evt.detail.x < -0.95) {
-        console.log("UP");
-        self.boxEl.setAttribute("position", {
-          x: vectors.x,
-          y: vectors.y + self.data.distance,
-          z: vectors.z,
-        });
-      }
-
-      if (evt.detail.x < -0.95) {
-        console.log("LEFT");
-        self.boxEl.setAttribute("position", {
-          x: vectors.x - self.data.distance,
-          y: vectors.y ,
-          z: vectors.z,
-        });
-      }
-
-      if (evt.detail.x > -0.95) {
-        console.log("RIGHT");
-        self.boxEl.setAttribute("position", {
-          x: vectors.x + self.data.distance,
-          y: vectors.y ,
-          z: vectors.z,
-        });
-      }
-    });
+    this.el.addEventListener('thumbstickmoved', this.logThumbstick);
   },
-  update:function(){
-    this.boxEl = this.el.sceneEl.querySelector("#you")
+  logThumbstick: function (evt) {
+    if (evt.detail.y > 0.95) { alert("DOWN"); }
+    if (evt.detail.y < -0.95) { calert("UP"); }
+    if (evt.detail.x < -0.95) { alert("LEFT"); }
+    if (evt.detail.x > 0.95) { alert("RIGHT"); }
   }
 });
+// AFRAME.registerComponent("thumbstick-moved", {
+//   schema: {
+//     distance: { type: "number", default: 0.1 },
+//   },
+//   init: function () {
+//     var self = this;
+//     this.el.addEventListener("thumbstickmoved", function (evt) {
+//       var vectors = self.boxEl.getAttribute("position");
+//       if (evt.detail.y > 0.95) {
+//         console.log("Down");
+//         self.boxEl.setAttribute("position", {
+//           x: vectors.x,
+//           y: vectors.y - self.data.distance,
+//           z: vectors.z,
+//         });
+//       }
+
+//       if (evt.detail.x < -0.95) {
+//         console.log("UP");
+//         self.boxEl.setAttribute("position", {
+//           x: vectors.x,
+//           y: vectors.y + self.data.distance,
+//           z: vectors.z,
+//         });
+//       }
+
+//       if (evt.detail.x < -0.95) {
+//         console.log("LEFT");
+//         self.boxEl.setAttribute("position", {
+//           x: vectors.x - self.data.distance,
+//           y: vectors.y ,
+//           z: vectors.z,
+//         });
+//       }
+
+//       if (evt.detail.x > -0.95) {
+//         console.log("RIGHT");
+//         self.boxEl.setAttribute("position", {
+//           x: vectors.x + self.data.distance,
+//           y: vectors.y ,
+//           z: vectors.z,
+//         });
+//       }
+//     });
+//   },
+//   update:function(){
+//     this.boxEl = this.el.sceneEl.querySelector("#you")
+//   }
+// });
