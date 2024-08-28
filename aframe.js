@@ -17,17 +17,50 @@ AFRAME.registerComponent("toggle-panel", {
 });
 
 
-AFRAME.registerComponent('thumbstick-logging',{
+AFRAME.registerComponent('thumbstick-logging', {
   init: function () {
     this.el.addEventListener('thumbstickmoved', this.logThumbstick);
+    this.cameraEl = document.querySelector('#you');
   },
   logThumbstick: function (evt) {
-    if (evt.detail.y > 0.95) { window.location.href = 'https://www.google.com';}
-    if (evt.detail.y < -0.95) { window.location.href = 'https://www.google.com';}
-    if (evt.detail.x < -0.95) { window.location.href = 'https://www.google.com'; }
-    if (evt.detail.x > 0.95) { window.location.href = 'https://www.google.com'; }
+    const moveDistance = 0.1; // 每次移動的距離
+    const currentPosition = this.cameraEl.getAttribute('position');
+
+    if (evt.detail.y > 0.95) { 
+      console.log("DOWN");
+      currentPosition.z += moveDistance;
+    }
+    if (evt.detail.y < -0.95) { 
+      console.log("UP");
+      currentPosition.z -= moveDistance;
+    }
+    if (evt.detail.x < -0.95) { 
+      console.log("LEFT");
+      currentPosition.x -= moveDistance;
+    }
+    if (evt.detail.x > 0.95) { 
+      console.log("RIGHT");
+      currentPosition.x += moveDistance;
+    }
+
+    this.cameraEl.setAttribute('position', currentPosition);
   }
 });
+// AFRAME.registerComponent('thumbstick-logging',{
+//   init: function () {
+//     this.el.addEventListener('thumbstickmoved', this.logThumbstick);
+//   },
+//   logThumbstick: function (evt) {
+//     var avatar = ocument.querySelector("#you");
+//     if (evt.detail.y > 0.95) { avatar}
+//     if (evt.detail.y < -0.95) { window.location.href = 'https://www.google.com';}
+//     if (evt.detail.x < -0.95) { window.location.href = 'https://www.google.com'; }
+//     if (evt.detail.x > 0.95) { window.location.href = 'https://www.google.com'; }
+//   }
+// });
+
+
+
 // AFRAME.registerComponent("thumbstick-moved", {
 //   schema: {
 //     distance: { type: "number", default: 0.1 },
