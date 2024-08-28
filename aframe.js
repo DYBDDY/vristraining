@@ -70,16 +70,18 @@ AFRAME.registerComponent('thumbstick-logging',{
     if (evt.detail.y > 0.95) { 
       
       var panel = document.querySelector('#html-panel');
-      panel.innerHTML = `
+      strInnerHTML = `
         <a-entity htmlembed position="2.698 -0.039 -3.520">
           <div class="wrapper">
-            <h1>HAHAHAHAHAHAHAHA</h1>
+            <h1>{replace}</h1>
             <p>Updated: Check email of the sender carefully!</p>
             <p>Be very cautious with clicking links.</p>
             <p>Always verify email sources.</p>
           </div>
         </a-entity>
-      `;
+      `
+      strInnerHTML.replace('{replace}', 'zzz')
+      panel.innerHTML = strInnerHTML;
       
       // var CameraEl = document.querySelector('#you');
       // tmp = CameraEl.object3D.position.x.toString();
