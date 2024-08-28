@@ -1,5 +1,3 @@
-
-
 AFRAME.registerComponent('toggle-panel', {
   init: function () {
     var button = this.el;
