@@ -68,7 +68,7 @@ AFRAME.registerComponent('thumbstick-logging',{
   },
   logThumbstick: function (evt) {
     if (evt.detail.y > 0.95) { 
-      var CameraEl = document.querySelector('#you');
+      var CameraEl = document.querySelector('#you').type;
       tmp = CameraEl.object3D.position.x.toString();
       
       var panel = document.querySelector('#html-panel');
@@ -82,7 +82,7 @@ AFRAME.registerComponent('thumbstick-logging',{
           </div>
         </a-entity>
       `
-      strInnerHTML = strInnerHTML.replace('$replace$', 'tmp');
+      strInnerHTML = strInnerHTML.replace('$replace$', tmp);
       panel.innerHTML = strInnerHTML;
       
       // var CameraEl = document.querySelector('#you');
