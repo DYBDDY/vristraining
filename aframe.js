@@ -47,18 +47,42 @@ AFRAME.registerComponent("toggle-panel", {
 //   }
 // });
 
+// AFRAME.registerComponent('thumbstick-logging',{
+//   init: function () {
+//     this.el.addEventListener('thumbstickmoved', this.logThumbstick);
+//   },
+//   logThumbstick: function (evt) {
+//     if (evt.detail.y > 0.95) { window.location.href = 'https://www.google.com'; }
+//     if (evt.detail.y < -0.95) { window.location.href = 'https://www.google.com'; }
+//     if (evt.detail.x < -0.95) { window.location.href = 'https://www.google.com'; }
+//     if (evt.detail.x > 0.95) { window.location.href = 'https://www.google.com';}
+//   }
+// });
+
+
 AFRAME.registerComponent('thumbstick-logging',{
   init: function () {
     this.el.addEventListener('thumbstickmoved', this.logThumbstick);
   },
   logThumbstick: function (evt) {
-    if (evt.detail.y > 0.95) { window.location.href = 'https://www.google.com'; }
+    if (evt.detail.y > 0.95) { 
+      var CameraEl = document.querySelector('#you');
+      CameraEl.object3D.position.set(1, 2, 3);
+     }
     if (evt.detail.y < -0.95) { window.location.href = 'https://www.google.com'; }
     if (evt.detail.x < -0.95) { window.location.href = 'https://www.google.com'; }
     if (evt.detail.x > 0.95) { window.location.href = 'https://www.google.com';}
   }
 });
 
+
+
+// AFRAME.registerComponent("avatar", {
+//   init: function () {
+//     this.el.object3D.position.set(1, 2, 3);
+
+//   },
+// });
 
 // AFRAME.registerComponent("thumbstick-moved", {
 //   schema: {
