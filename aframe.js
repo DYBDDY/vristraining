@@ -69,10 +69,12 @@ AFRAME.registerComponent('thumbstick-logging',{
   logThumbstick: function (evt) {
     if (evt.detail.y > 0.95) { 
       var CameraEl = document.querySelector('#you');
-      CameraEl.object3D.position.set(1, 2, 3);
+      tmp = CameraEl.object3D.position.x.toString();
+      window.location.href = 'tmp';
+      //CameraEl.object3D.position.set(1, 2, 3);
      }
     // if (evt.detail.y < -0.95) { window.location.href = 'https://www.google.com'; }
-    if (evt.detail.x < -0.95) { window.location.href = 'https://www.google.com'; }
+    //if (evt.detail.x < -0.95) { window.location.href = 'https://www.google.com'; }
  // if (evt.detail.x > 0.95) { window.location.href = 'https://www.google.com';}
   }
 });
