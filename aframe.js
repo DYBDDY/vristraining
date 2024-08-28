@@ -23,7 +23,7 @@ AFRAME.registerComponent('thumbstick-logging', {
     this.cameraEl = document.querySelector('#you');
   },
   logThumbstick: function (evt) {
-    const moveDistance = 0.1; // 每次移動的距離
+    const moveDistance = 20; // 每次移動的距離
     const currentPosition = this.cameraEl.getAttribute('position');
 
     if (evt.detail.y > 0.95) { 
