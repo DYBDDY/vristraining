@@ -29,3 +29,20 @@ AFRAME.registerComponent('toggle-panel', {
 //   }
 // });
 
+
+AFRAME.registerComponent('thumbstick-click', {
+  init: function () {
+    this.el.addEventListener('triggerdown', this.handleTriggerDown.bind(this));
+  },
+
+  handleTriggerDown: function (evt) {
+    var camera = document.querySelector('a-camera');
+    var cursor = document.querySelector('a-cursor');
+
+    var intersection = cursor.components.raycaster.getIntersection(this.el);
+
+    if (intersection) {
+      this.el.emit('click');
+    }
+  }  
+});
