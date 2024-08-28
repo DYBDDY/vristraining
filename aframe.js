@@ -1,37 +1,67 @@
-AFRAME.registerComponent('toggle-panel', {
+AFRAME.registerComponent("toggle-panel", {
   init: function () {
     var button = this.el;
-    var panel = document.querySelector('#html-panel');
+    var panel = document.querySelector("#html-panel");
 
-    button.addEventListener('click', function () {
+    button.addEventListener("click", function () {
       console.log("Button clicked");
-      var isVisible = panel.getAttribute('visible') === true;
+      var isVisible = panel.getAttribute("visible") === true;
 
       if (isVisible) {
-        panel.setAttribute('visible', false);
+        panel.setAttribute("visible", false);
       } else {
-        panel.setAttribute('visible', true);
+        panel.setAttribute("visible", true);
       }
     });
-  }
+  },
 });
 
-
-AFRAME.registerComponent('thumbstick-movement', {
-  init: function () {
-    this.el.addEventListener('thumbstickmoved', this.handleThumbstick);
+AFRAME.registerComponent("thumbstick-moved", {
+  schema: {
+    distance: { type: "number", default: 0.1 },
   },
-  
-  handleThumbstick: function (evt) {
-    const speed = 0.1; 
-    
-    if (evt.detail.y > 0.95) { 
-      // 向後移動
-      this.el.object3D.position.x -= speed;
-    }
-    if (evt.detail.y < -0.95) {
-      // 向前移動 
-      this.el.object3D.position.x += speed;  
-    }
+  init: function () {
+    var self = this;
+    this.el.addEventListener("thumbstickmoved", function (evt) {
+      var vectors = self.boxEl.getAttribute("position");
+      if (evt.detail.y > 0.95) {
+        console.log("Down");
+        self.boxEl.setAttribute("position", {
+          x: vectors.x,
+          y: vectors.y - self.data.distance,
+          z: vectors.z,
+        });
+      }
+
+      if (evt.detail.x < -0.95) {
+        console.log("UP");
+        self.boxEl.setAttribute("position", {
+          x: vectors.x,
+          y: vectors.y + self.data.distance,
+          z: vectors.z,
+        });
+      }
+
+      if (evt.detail.x < -0.95) {
+        console.log("LEFT");
+        self.boxEl.setAttribute("position", {
+          x: vectors.x - self.data.distance,
+          y: vectors.y ,
+          z: vectors.z,
+        });
+      }
+
+      if (evt.detail.x > -0.95) {
+        console.log("RIGHT");
+        self.boxEl.setAttribute("position", {
+          x: vectors.x + self.data.distance,
+          y: vectors.y ,
+          z: vectors.z,
+        });
+      }
+    });
+  },
+  update:function(){
+    this.boxEl = this.el.sceneEl.querySelector("#you")
   }
 });
