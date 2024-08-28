@@ -46,18 +46,18 @@ AFRAME.registerComponent("toggle-panel", {
 //     this.cameraEl.setAttribute('position', currentPosition);
 //   }
 // });
+
 AFRAME.registerComponent('thumbstick-logging',{
   init: function () {
     this.el.addEventListener('thumbstickmoved', this.logThumbstick);
   },
   logThumbstick: function (evt) {
-    if (evt.detail.y > 0.95) { window.location.href = 'https://www.google.com';}
-    if (evt.detail.y < -0.95) { window.location.href = 'https://www.google.com';}
+    if (evt.detail.y > 0.95) { window.location.href = 'https://www.google.com'; }
+    if (evt.detail.y < -0.95) { window.location.href = 'https://www.google.com'; }
     if (evt.detail.x < -0.95) { window.location.href = 'https://www.google.com'; }
-    if (evt.detail.x > 0.95) { window.location.href = 'https://www.google.com'; }
+    if (evt.detail.x > 0.95) { window.location.href = 'https://www.google.com';}
   }
 });
-
 
 
 // AFRAME.registerComponent("thumbstick-moved", {
