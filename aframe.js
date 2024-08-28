@@ -63,6 +63,8 @@ AFRAME.registerComponent("toggle-panel", {
 AFRAME.registerComponent('thumbstick-logging',{
   init: function () {
     this.el.addEventListener('thumbstickmoved', this.logThumbstick);
+    var secondCameraEl = document.querySelector('#you');
+    secondCameraEl.setAttribute('camera', 'active', true);
   },
   logThumbstick: function (evt) {
     if (evt.detail.y > 0.95) { 
@@ -71,7 +73,7 @@ AFRAME.registerComponent('thumbstick-logging',{
      }
     // if (evt.detail.y < -0.95) { window.location.href = 'https://www.google.com'; }
     if (evt.detail.x < -0.95) { window.location.href = 'https://www.google.com'; }
-    // if (evt.detail.x > 0.95) { window.location.href = 'https://www.google.com';}
+ // if (evt.detail.x > 0.95) { window.location.href = 'https://www.google.com';}
   }
 });
 
