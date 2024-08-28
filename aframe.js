@@ -4,7 +4,7 @@ AFRAME.registerComponent('toggle-panel', {
     var panel = document.querySelector('#html-panel');
     // var panelContent = document.querySelector('#panel-content');
 
-    button.addEventListener('buttondown', function () {
+    button.addEventListener('click', function () {
       console.log("Button clicked");
       var isVisible = panel.getAttribute('visible') === true;
 
