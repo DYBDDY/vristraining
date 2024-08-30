@@ -1,21 +1,48 @@
+// AFRAME.registerComponent("toggle-panel", {
+//   init: function () {
+//     var button = this.el;
+//     var panel = document.querySelector("#html-panel");
+//     var you = document.querySelector('#you');
+
+//     button.addEventListener("click", function () {
+//       console.log("Button clicked");
+//       console.log(you)
+//       // you.setAttribute('position', {x: 1, y: 2, z: 3});
+//       you.object3D.position.set(1, 2, 3)
+//       var isVisible = panel.getAttribute("visible") === true;
+
+//       if (isVisible) {
+//         panel.setAttribute("visible", false);
+//       } else {
+//         panel.setAttribute("visible", true);
+//       }
+//     });
+//   },
+// });
+
+function setupButtonListener(button, panel, you) {
+  button.addEventListener("click", function () {
+    console.log("Button clicked");
+    console.log(you);
+    you.object3D.position.set(1, 2, 3);
+    var isVisible = panel.getAttribute("visible") === true;
+    if (isVisible) {
+      panel.setAttribute("visible", false);
+    } else {
+      panel.setAttribute("visible", true);
+    }
+  });
+}
+
 AFRAME.registerComponent("toggle-panel", {
   init: function () {
     var button = this.el;
     var panel = document.querySelector("#html-panel");
+    var you = document.querySelector("#you");
 
-    button.addEventListener("click", function () {
-      console.log("Button clicked");
-      var isVisible = panel.getAttribute("visible") === true;
-
-      if (isVisible) {
-        panel.setAttribute("visible", false);
-      } else {
-        panel.setAttribute("visible", true);
-      }
-    });
+    setupButtonListener(button, panel, you);
   },
 });
-
 
 // AFRAME.registerComponent('thumbstick-logging', {
 //   init: function () {
@@ -26,19 +53,19 @@ AFRAME.registerComponent("toggle-panel", {
 //     const moveDistance = 20; // 每次移動的距離
 //     const currentPosition = this.cameraEl.getAttribute('position');
 
-//     if (evt.detail.y > 0.95) { 
+//     if (evt.detail.y > 0.95) {
 //       console.log("DOWN");
 //       currentPosition.z += moveDistance;
 //     }
-//     if (evt.detail.y < -0.95) { 
+//     if (evt.detail.y < -0.95) {
 //       console.log("UP");
 //       currentPosition.z -= moveDistance;
 //     }
-//     if (evt.detail.x < -0.95) { 
+//     if (evt.detail.x < -0.95) {
 //       console.log("LEFT");
 //       currentPosition.x -= moveDistance;
 //     }
-//     if (evt.detail.x > 0.95) { 
+//     if (evt.detail.x > 0.95) {
 //       console.log("RIGHT");
 //       currentPosition.x += moveDistance;
 //     }
@@ -59,19 +86,18 @@ AFRAME.registerComponent("toggle-panel", {
 //   }
 // });
 
-
-AFRAME.registerComponent('thumbstick-logging',{
+AFRAME.registerComponent("thumbstick-logging", {
   init: function () {
-    this.el.addEventListener('thumbstickmoved', this.logThumbstick);
-    var secondCameraEl = document.querySelector('#you');
-    secondCameraEl.setAttribute('camera', 'active', true);
+    this.el.addEventListener("thumbstickmoved", this.logThumbstick);
+    var secondCameraEl = document.querySelector("#you");
+    secondCameraEl.setAttribute("camera", "active", true);
   },
   logThumbstick: function (evt) {
-    if (evt.detail.y > 0.95) { 
-      var CameraEl = document.querySelector('#you').type;
+    if (evt.detail.y > 0.95) {
+      var CameraEl = document.querySelector("#you").type;
       tmp = CameraEl.object3D.position.x.toString();
-      
-      var panel = document.querySelector('#html-panel');
+
+      var panel = document.querySelector("#html-panel");
       strInnerHTML = `
         <a-entity htmlembed position="2.698 -0.039 -3.520">
           <div class="wrapper">
@@ -81,76 +107,19 @@ AFRAME.registerComponent('thumbstick-logging',{
             <p>Always verify email sources.</p>
           </div>
         </a-entity>
-      `
-      strInnerHTML = strInnerHTML.replace('$replace$', tmp);
+      `;
+      strInnerHTML = strInnerHTML.replace("$replace$", tmp);
       panel.innerHTML = strInnerHTML;
-      
+
       // var CameraEl = document.querySelector('#you');
       // tmp = CameraEl.object3D.position.x.toString();
       // window.location.href = 'https://tmp';
       //CameraEl.object3D.position.set(1, 2, 3);
-     }
+    }
     // if (evt.detail.y < -0.95) { window.location.href = 'https://www.google.com'; }
     //if (evt.detail.x < -0.95) { window.location.href = 'https://www.google.com'; }
- // if (evt.detail.x > 0.95) { window.location.href = 'https://www.google.com';}
-  }
+    // if (evt.detail.x > 0.95) { window.location.href = 'https://www.google.com';}
+  },
 });
 
 
-
-// AFRAME.registerComponent("avatar", {
-//   init: function () {
-//     this.el.object3D.position.set(1, 2, 3);
-
-//   },
-// });
-
-// AFRAME.registerComponent("thumbstick-moved", {
-//   schema: {
-//     distance: { type: "number", default: 0.1 },
-//   },
-//   init: function () {
-//     var self = this;
-//     this.el.addEventListener("thumbstickmoved", function (evt) {
-//       var vectors = self.boxEl.getAttribute("position");
-//       if (evt.detail.y > 0.95) {
-//         console.log("Down");
-//         self.boxEl.setAttribute("position", {
-//           x: vectors.x,
-//           y: vectors.y - self.data.distance,
-//           z: vectors.z,
-//         });
-//       }
-
-//       if (evt.detail.x < -0.95) {
-//         console.log("UP");
-//         self.boxEl.setAttribute("position", {
-//           x: vectors.x,
-//           y: vectors.y + self.data.distance,
-//           z: vectors.z,
-//         });
-//       }
-
-//       if (evt.detail.x < -0.95) {
-//         console.log("LEFT");
-//         self.boxEl.setAttribute("position", {
-//           x: vectors.x - self.data.distance,
-//           y: vectors.y ,
-//           z: vectors.z,
-//         });
-//       }
-
-//       if (evt.detail.x > -0.95) {
-//         console.log("RIGHT");
-//         self.boxEl.setAttribute("position", {
-//           x: vectors.x + self.data.distance,
-//           y: vectors.y ,
-//           z: vectors.z,
-//         });
-//       }
-//     });
-//   },
-//   update:function(){
-//     this.boxEl = this.el.sceneEl.querySelector("#you")
-//   }
-// });
