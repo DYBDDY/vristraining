@@ -108,7 +108,7 @@ AFRAME.registerComponent("thumbstick-logging", {
           </div>
         </a-entity>
       `;
-      strInnerHTML = strInnerHTML.replace("$replace$", tmp);
+      strInnerHTML = strInnerHTML.replace("$replace$", 'tmp');
       panel.innerHTML = strInnerHTML;
 
       // var CameraEl = document.querySelector('#you');
