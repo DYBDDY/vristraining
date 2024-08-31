@@ -24,7 +24,7 @@ function setupButtonListener(button, panel, you) {
   button.addEventListener("click", function () {
     console.log("Button clicked");
     console.log(you);
-    you.object3D.position.set(1, 2, 3);
+    // you.object3D.position.set(1, 2, 3);
     var isVisible = panel.getAttribute("visible") === true;
     if (isVisible) {
       panel.setAttribute("visible", false);
@@ -108,7 +108,7 @@ AFRAME.registerComponent("thumbstick-logging", {
           </div>
         </a-entity>
       `;
-      strInnerHTML = strInnerHTML.replace("$replace$", 'tmp');
+      strInnerHTML = strInnerHTML.replace("$replace$", 'lol');
       panel.innerHTML = strInnerHTML;
 
       // var CameraEl = document.querySelector('#you');
