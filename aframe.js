@@ -23,8 +23,6 @@
 function setupButtonListener(button, panel, you) {
   button.addEventListener("click", function () {
     console.log("Button clicked");
-    console.log(you);
-    // you.object3D.position.set(1, 2, 3);
     var isVisible = panel.getAttribute("visible") === true;
     if (isVisible) {
       panel.setAttribute("visible", false);
@@ -38,88 +36,37 @@ AFRAME.registerComponent("toggle-panel", {
   init: function () {
     var button = this.el;
     var panel = document.querySelector("#html-panel");
-    var you = document.querySelector("#you");
-
-    setupButtonListener(button, panel, you);
+    // var you = document.querySelector("#you");
+    setupButtonListener(button, panel);
   },
 });
 
-// AFRAME.registerComponent('thumbstick-logging', {
-//   init: function () {
-//     this.el.addEventListener('thumbstickmoved', this.logThumbstick);
-//     this.cameraEl = document.querySelector('#you');
-//   },
-//   logThumbstick: function (evt) {
-//     const moveDistance = 20; // 每次移動的距離
-//     const currentPosition = this.cameraEl.getAttribute('position');
 
-//     if (evt.detail.y > 0.95) {
-//       console.log("DOWN");
-//       currentPosition.z += moveDistance;
-//     }
-//     if (evt.detail.y < -0.95) {
-//       console.log("UP");
-//       currentPosition.z -= moveDistance;
-//     }
-//     if (evt.detail.x < -0.95) {
-//       console.log("LEFT");
-//       currentPosition.x -= moveDistance;
-//     }
-//     if (evt.detail.x > 0.95) {
-//       console.log("RIGHT");
-//       currentPosition.x += moveDistance;
-//     }
-
-//     this.cameraEl.setAttribute('position', currentPosition);
-//   }
-// });
-
-// AFRAME.registerComponent('thumbstick-logging',{
-//   init: function () {
-//     this.el.addEventListener('thumbstickmoved', this.logThumbstick);
-//   },
-//   logThumbstick: function (evt) {
-//     if (evt.detail.y > 0.95) { window.location.href = 'https://www.google.com'; }
-//     if (evt.detail.y < -0.95) { window.location.href = 'https://www.google.com'; }
-//     if (evt.detail.x < -0.95) { window.location.href = 'https://www.google.com'; }
-//     if (evt.detail.x > 0.95) { window.location.href = 'https://www.google.com';}
-//   }
-// });
 
 AFRAME.registerComponent("thumbstick-logging", {
   init: function () {
     this.el.addEventListener("thumbstickmoved", this.logThumbstick);
-    var secondCameraEl = document.querySelector("#you");
-    secondCameraEl.setAttribute("camera", "active", true);
   },
+
   logThumbstick: function (evt) {
+    var you = document.querySelector("#rig");
     if (evt.detail.y > 0.95) {
-      var CameraEl = document.querySelector("#you").type;
-      tmp = CameraEl.object3D.position.x.toString();
-
-      var panel = document.querySelector("#html-panel");
-      strInnerHTML = `
-        <a-entity htmlembed position="2.698 -0.039 -3.520">
-          <div class="wrapper">
-            <h1>$replace$</h1>
-            <p>Updated: Check email of the sender carefully!</p>
-            <p>Be very cautious with clicking links.</p>
-            <p>Always verify email sources.</p>
-          </div>
-        </a-entity>
-      `;
-      strInnerHTML = strInnerHTML.replace("$replace$", 'lol');
-      panel.innerHTML = strInnerHTML;
-
-      // var CameraEl = document.querySelector('#you');
-      // tmp = CameraEl.object3D.position.x.toString();
-      // window.location.href = 'https://tmp';
-      //CameraEl.object3D.position.set(1, 2, 3);
+      // you.object3D.position.x += 1;
+      you.object3D.position.z += 0.01;
+      console.log("DOWN");
+      // you.object3D.position.set(1, 2, 3);
     }
-    // if (evt.detail.y < -0.95) { window.location.href = 'https://www.google.com'; }
-    //if (evt.detail.x < -0.95) { window.location.href = 'https://www.google.com'; }
-    // if (evt.detail.x > 0.95) { window.location.href = 'https://www.google.com';}
+    if (evt.detail.y < -0.95) {
+      you.object3D.position.z -= 0.01;
+      console.log("UP");
+    }
+    if (evt.detail.x < -0.95) {
+      you.object3D.position.x -= 0.01;
+      console.log("LEFT");
+    }
+    if (evt.detail.x > 0.95) {
+      you.object3D.position.x += 0.01;
+      console.log("RIGHT");
+    }
   },
 });
-
-

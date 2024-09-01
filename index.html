@@ -10,21 +10,26 @@
   <!-- <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script> -->
   <!-- <script src="https://unpkg.com/aframe-thumb-controls-component@1.1.0/dist/aframe-thumb-controls-component.min.js"></script> -->
   <!-- <script src="../../../dist/aframe-master.js"></script> -->
-  <script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script>
-  <!-- <script src="aframe-htmlembed-component.js"></script> -->
+  <!-- <script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script> -->
+  <script src="aframe-htmlembed-component.js"></script>
   <!-- <script src="https://unpkg.com/aframe-html-shader@0.1.0/dist/aframe-html-shader.min.js"></script> -->
   <!-- <script src="https://unpkg.com/aframe-gui@0.3.0/dist/aframe-gui.min.js"></script> -->
   <!-- <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script> -->
 </head>
 
 <body>
+  
   <a-scene vr-mode-ui="enabled: true">
     <a-sky src="./source/testimg/AdobeStock_269353732_Preview.jpeg" rotation="0 -90 0"></a-sky>
 
-    <a-entity id="you" camera wasd-controls="acceleration: 20" look-controls position="0 1.3 0" avatar>
+    <!-- <a-entity id="you" camera wasd-controls="acceleration: 20" look-controls position="0 1.3 0" avatar>
       <a-cursor></a-cursor>
+    </a-entity> -->
+    <a-entity id="rig" position="0 0.5 0">
+      <a-camera id="camera" wasd-controls="acceleration: 20" look-controls position="0 1.3 0">
+        <a-cursor></a-cursor>
+      </a-camera>
     </a-entity>
-  
     <!-- 模型 -->
     <a-assets>
       <a-asset-item id="officeModel" src="./source/testimg/mersus_office.glb"></a-asset-item>
@@ -35,13 +40,15 @@
     <a-light type="ambient" color="#828278"></a-light>
     <a-light type="point" intensity="1" color="#ebebeb" position="2 4 2"></a-light>
 
-    <!-- 使用資產 -->
+    <!-- 使用模型 -->
     <a-entity id="officeModel" gltf-model="#officeModel" position="0 0 0" scale="1 1 1"></a-entity>
     <a-entity id="officecomputermodel" gltf-model="#officecomputermodel" position="-1.057 0.552 -3.913"
       scale="2.5 2.5 2.5"></a-entity>
     <a-entity id="printer" gltf-model="#printermodel" position="2.155 0.811 -2.133" scale="1.759 1.759 1.759"
       rotation="-5.908 86.731 -2.219"></a-entity>
-
+    <a-entity id="textpanel" position="-0.117 1.634 -1.620">
+      <a-text value="Hello, World!"></a-text>
+    </a-entity>  
     <!-- 互動面板 -->
     <a-entity id="html-panel" position="-3.849 1.809 0.146" visible="true">
       <a-entity htmlembed position="2.698 -0.039 -3.520" scale>
