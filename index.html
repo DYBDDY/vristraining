@@ -18,63 +18,140 @@
 </head>
 
 <body>
-  
-  <a-scene vr-mode-ui="enabled: true">
+  <a-scene vr-mode-ui="enabled: true" environment cursor="rayOrigin: mouse; fuse: false"
+    raycaster="objects: .raycastable">
     <a-sky src="./source/testimg/AdobeStock_269353732_Preview.jpeg" rotation="0 -90 0"></a-sky>
 
-    <!-- <a-entity id="you" camera wasd-controls="acceleration: 20" look-controls position="0 1.3 0" avatar>
-      <a-cursor></a-cursor>
-    </a-entity> -->
-    <a-entity id="rig" position="0 0.5 0">
+    <!-- 視角 -->
+    <!-- <a-entity id="rig" position="0 0.5 0">
       <a-camera id="camera" wasd-controls="acceleration: 20" look-controls position="0 1.3 0">
-        <a-cursor></a-cursor>
+      </a-camera>
+    </a-entity> -->
+    <a-entity id="rig" position="3.402 0.500 -1.955" rotation="0 87.255 0">
+      <a-camera id="camera" wasd-controls="acceleration: 10" look-controls position="-0.958 0.683 1.138">
       </a-camera>
     </a-entity>
+    <!-- <a-entity id="player" position="0 1.3 0">
+      <a-entity id="head" camera wasd-controls look-controls></a-entity>
+      <a-controller id="controllerL" hand="left" move="true"></a-controller>
+      <a-controller id="controllerR" hand="right" turn-type="snap"></a-controller>
+    </a-entity> -->
+
     <!-- 模型 -->
     <a-assets>
       <a-asset-item id="officeModel" src="./source/testimg/mersus_office.glb"></a-asset-item>
       <a-asset-item id="officecomputermodel" src="./source/phishing.glb"></a-asset-item>
       <a-asset-item id="printermodel" src="./source/confidential2.glb"></a-asset-item>
+      <a-asset-item id="passwordnote" src="./source/passwordnoteglb.glb"></a-asset-item>
+      <a-asset-item id="closebtn" src="./source/close.glb"></a-asset-item>
+    </a-assets>
+    <!-- 圖片或影片 -->
+    <a-assets>
+      <img id="windows" src="source/testimg/windows.png">
+      <img id="close" src="source/testimg/close.png">
+      <!-- <video id="video" autoplay loop="true" src="https://www.youtube.com/watch?v=Z1Yd7upQsXY"></video> -->
     </a-assets>
 
+    <!-- 燈光 -->
     <a-light type="ambient" color="#828278"></a-light>
     <a-light type="point" intensity="1" color="#ebebeb" position="2 4 2"></a-light>
 
-    <!-- 使用模型 -->
+    <!-- 使用模型或圖片 -->
     <a-entity id="officeModel" gltf-model="#officeModel" position="0 0 0" scale="1 1 1"></a-entity>
-    <a-entity id="officecomputermodel" gltf-model="#officecomputermodel" position="-1.057 0.552 -3.913"
-      scale="2.5 2.5 2.5"></a-entity>
+
+    <a-entity id="officecomputermodel1" gltf-model="#officecomputermodel" class="raycastable"
+      position="-1.057 0.552 -3.913" visible="true" scale="2.5 2.5 2.5" computerdesk></a-entity>
+
     <a-entity id="printer" gltf-model="#printermodel" position="2.155 0.811 -2.133" scale="1.759 1.759 1.759"
-      rotation="-5.908 86.731 -2.219"></a-entity>
-    <a-entity id="textpanel" position="-0.117 1.634 -1.620">
-      <a-text value="Hello, World!"></a-text>
-    </a-entity>  
-    <!-- 互動面板 -->
-    <a-entity id="html-panel" position="-3.849 1.809 0.146" visible="true">
-      <a-entity htmlembed position="2.698 -0.039 -3.520" scale>
-        <div class="wrapper">
+      rotation="-5.908 86.731 -2.219" class="raycastable" printer></a-entity>
+    </a-entity>
+
+    <a-entity id="passwordnote" gltf-model="#passwordnote" position="0.143 0.946 1.274" scale="0.494 0.494 0.494"
+      class="raycastable" passwordnote></a-entity>
+
+    <a-entity id="windowson" position="0.100 0.823 -2.378" scale="0.265 0.291 0.257" rotation="0 15.254 0"
+      class="raycastable" windows>
+      <a-plane src="#windows" height="1" width="2" class="raycastable"></a-plane>
+    </a-entity>
+
+    <!-- 互動面板1 -->
+    <a-entity id="html-panel1" position="0.279 1.723 -3.354" geometry="primitive: plane; width: 2; height: 1"
+      material="color:black" text="color: blue; align: center; value:; width: 2; " visible="false">
+      <a-text value="lol"></a-text>
+      <a-text value="Phishing Email 4"></a-text>
+      <a-text value="email of the sender"></a-text>
+      <a-text value="Be careful when clicking links"></a-text>
+      <a-text value="Be cautious with mails"></a-text>
+    </a-entity>
+
+    <!-- 互動面板2 -->
+    <a-entity id="html-panel2" position="2.584 1.723 -1.587" rotation="0 88.100 0"
+      geometry="primitive: plane; width: 2; height: 1" material="color:black"
+      text="color: blue; align: center; value:; width: 2;" visible="false">
+      <a-text value="Documents with confidential information" position="-0.800 0.383 0.027"
+        scale="0.412 0.412 0.412"></a-text>
+      <a-text value="Dont leave laying around" position="-0.473 0.181 0.000" scale="0.409 0.409 0.409"></a-text>
+      <a-text value="Keep in a locked drawer" position="-0.451 0 0.015" scale="0.409 0.409 0.409"></a-text>
+    </a-entity>
+
+    <!-- 互動面板3 -->
+    <a-entity id="html-panel3" position="0.382 1.616 1.183" rotation="0 0.221 0"
+      geometry="primitive: plane; width: 2; height: 1" material="color:black"
+      text="color: blue; align: center; value:; width: 2;" visible="false">
+      <a-text value="Password on a sticky note" position="0.036 0.383 0.030" scale="0.532 0.532 0.532"
+        text="align: center;"></a-text>
+      <a-text value="Dont write passwords down" position="0.017 0.181 0.000" scale="0.334 0.334 0.334"
+        text="align: center;"></a-text>
+      <a-text value="Dont share passwords" position="0.019 0.054 0.015" scale="0.334 0.334 0.334"
+        text="align: center;"></a-text>
+      <a-text value="Use strong passwords" position="0.023 -0.069 0.015" scale="0.334 0.334 0.334"
+        text="align: center;"></a-text>
+      <a-text value="Consider using a password manager" position="0.028 -0.188 0.015" scale="0.334 0.334 0.334"
+        text="align: center;"></a-text>
+    </a-entity>
+
+    <!-- 互動面板4 -->
+    <a-entity id="html-panel4" position="0.382 1.616 -2.430" rotation="0 0.221 0"
+      geometry="primitive: plane; width: 2; height: 1" material="color:black"
+      text="color: blue; align: center; value:; width: 2;" visible="false">
+      <a-entity id="closebtn"gltf-model="#closebtn" position=" 0.907 0.421 -0.045" scale=" 0.165 0.165 0.165" rotation=""
+        class="raycastable" closebtn>
+      </a-entity>
+      <a-text value="Unlocked device" position="0.036 0.383 0.030" scale="0.532 0.532 0.532"
+        text="align: center;"></a-text>
+      <a-text value="Lock after use" position="0.017 0.181 0.000" scale="0.334 0.334 0.334"
+        text="align: center;"></a-text>
+      <a-text value="Dont leave unattended" position="0.019 0.017 0.015" scale="0.334 0.334 0.334"
+        text="align: center;"></a-text>
+      <a-text value="Use strong passwords" position="0.019 -0.167 0.015" scale="0.334 0.334 0.334"
+        text="align: center;"></a-text>
+    </a-entity>
+
+    <!-- 互動面板backup -->
+    <!-- <a-entity id="html-panelbk" position="-3.849 1.809 0.146" visible="true">
+      <a-entity htmlembed="width: 1920; height: 1080" position="2.698 -0.039 -3.520" scale>
+        <div class="wrapper" embedded>
           <h1>Phishing Email 4</h1>
           <p>Check email of the sender</p>
           <p>Be careful when clicking links</p>
           <p>Be cautious with mails</p>
-          <!-- wa<img src="/source/testimg/phishing.png" alt="image"> -->
+          <button></button>
         </div>
-
       </a-entity>
-    </a-entity>
+    </a-entity> -->
 
     <!-- 手部控制 -->
-    <a-entity oculus-touch-controls="hand: left" model="true"  thumbstick-logging ></a-entity>
-    <a-entity oculus-touch-controls="hand: right" model="true" thumbstick-logging ></a-entity>
+    <a-entity oculus-touch-controls="hand: left" model="true" thumbstick-logging-move></a-entity>
+    <a-entity oculus-touch-controls="hand: right" model="true" thumbstick-logging-look></a-entity>
     <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
     <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable"
       line="color: #118A7E"></a-entity>
 
     <!-- 按鈕 -->
-    <a-circle id="show-panel-button" class="raycastable" position="-0.327 1.078 -2.960" rotation="0 3.792 0"
+    <!-- <a-circle id="show-panel-button" class="raycastable" position="-0.327 1.078 -2.960" rotation="0 3.792 0"
       scale="0.241 0.218 0.562" width="0.5" height="0.5" depth="0.5" color="#4CC3D9" toggle-panel></a-circle>
-  </a-scene>
-  <script src="aframe.js"></script>
+  </a-scene> -->
+    <script src="aframe.js"></script>
 </body>
 
 </html>
