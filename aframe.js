@@ -58,10 +58,10 @@ AFRAME.registerComponent("printer", {
       var isVisible = panel.getAttribute("visible") === true;
       if (isVisible) {
         panel.setAttribute("visible", false);
-        console.log("printer hide")
+        console.log("printer hide");
       } else {
         panel.setAttribute("visible", true);
-        console.log("printer show")
+        console.log("printer show");
       }
     });
   },
@@ -77,16 +77,16 @@ AFRAME.registerComponent("passwordnote", {
     });
 
     passwordnote.addEventListener("mouseleave", function () {
-      passwordnote.object3D.scale.set(0.494 ,0.494 ,0.494);
+      passwordnote.object3D.scale.set(0.494, 0.494, 0.494);
     });
     passwordnote.addEventListener("click", function () {
       var isVisible = panel.getAttribute("visible") === true;
       if (isVisible) {
         panel.setAttribute("visible", false);
-        console.log("printer hide")
+        console.log("printer hide");
       } else {
         panel.setAttribute("visible", true);
-        console.log("printer show")
+        console.log("printer show");
       }
     });
   },
@@ -95,32 +95,73 @@ AFRAME.registerComponent("passwordnote", {
 //螢幕畫面
 AFRAME.registerComponent("windows", {
   init: function () {
-    var windows = this.el
+    var windows = this.el;
     var panel = document.querySelector("#html-panel4");
+    var unlockdevicesound = document.querySelector("#udsound");
     windows.addEventListener("mouseenter", function () {
-      windows.object3D.position.set(0.100, 0.954, -2.146);
+      windows.object3D.position.set(0.1, 0.954, -2.146);
       windows.object3D.scale.set(0.492, 0.541, 0.477);
       console.log("size changed to 3, 3, 3");
     });
 
     windows.addEventListener("mouseleave", function () {
-      windows.object3D.position.set(0.100 ,0.823, -2.378);
-      windows.object3D.scale.set(0.265 ,0.291, 0.257);
+      windows.object3D.position.set(0.1, 0.823, -2.378);
+      windows.object3D.scale.set(0.265, 0.291, 0.257);
     });
 
     windows.addEventListener("click", function () {
       var isVisible = panel.getAttribute("visible") === true;
       if (isVisible) {
         panel.setAttribute("visible", false);
-        console.log("printer hide")
+        // console.log(typeof(unlockdevicesound))
+        unlockdevicesound.components.sound.stopSound();
+        console.log("printer hide");
+        
       } else {
         panel.setAttribute("visible", true);
-        console.log("printer show")
+        unlockdevicesound.components.sound.playSound();
+        console.log("printer show");
       }
     });
+
+    // unlockdevicesound.addEventListener;
   },
 });
 
+//手機
+AFRAME.registerComponent("unkownphonecall", {
+  init: function () {
+    var windows = this.el;
+    // var panel = document.querySelector("#html-panel4");
+    var phonesound = document.querySelector("#phsound");
+    windows.addEventListener("mouseenter", function () {
+      windows.object3D.scale.set(0.5, 0.5, 0.5);
+      phonesound.components.sound.playSound();
+    });
+
+    windows.addEventListener("mouseleave", function () {
+           windows.object3D.scale.set(0.265, 0.291 ,0.257);
+           phonesound.components.sound.stopSound();
+    });
+
+    // windows.addEventListener("click", function () {
+    //   var isVisible = panel.getAttribute("visible") === true;
+    //   if (isVisible) {
+    //     // panel.setAttribute("visible", false);
+    //     // console.log(typeof(unlockdevicesound))
+    //     phonesound.components.sound.stopSound();
+    //     // console.log("printer hide");
+        
+    //   } else {
+    //     // panel.setAttribute("visible", true);
+    //     phonesound.components.sound.playSound();
+    //     // console.log("printer show");
+    //   }
+    // });
+
+    // unlockdevicesound.addEventListener;
+  },
+});
 
 // 移動
 AFRAME.registerComponent("thumbstick-logging-move", {
@@ -161,6 +202,9 @@ AFRAME.registerComponent("thumbstick-logging-move", {
     }
   },
 });
+
+//panel4sound
+// AFRAME.registerComponent("unlockdevicesound", {});
 
 // 轉動
 AFRAME.registerComponent("thumbstick-logging-look", {
