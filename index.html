@@ -49,6 +49,7 @@
       <a-asset-item id="cellphone" src="./source/unlockedcellphone.glb"></a-asset-item>
       <a-asset-item id="whiteboard" src="./source/whiteboard.glb"></a-asset-item>
       <a-asset-item id="usb_flash_drive" src="./source/usb_flash_drive.glb"></a-asset-item>
+      <a-asset-item id="id_card" src="./source/id_card_model.glb"></a-asset-item>
       <a-asset-item id="white_board" src="./source/whiteboard.glb"></a-asset-item>
       <a-asset-item id="plants_with_pot" src="./source/plant_with_pot.glb"></a-asset-item>
       <a-asset-item id="pothos_plant" src="./source/pothos_plant.glb"></a-asset-item>
@@ -59,8 +60,8 @@
     <a-assets>
       <img id="windows" src="source/testimg/windows.png">
       <img id="close" src="source/testimg/close.png">
-      <audio id="unlockdevicesound" src="/source/unlock_device.mp3" preload="auto"></audio>
-      <audio id="phonecallsound" src="/source/cellphone-vibrating-on-desk-44808.mp3" preload="auto"></audio>
+      <audio id="unlockdevicesound" src="./source/You broke the rule,unlocked device.mp3" preload="auto"></audio>
+      <audio id="phonecallsound" src="./source/cellphone-vibrating-on-desk-44808.mp3" preload="auto"></audio>
       <!-- <video id="video" autoplay loop="true" src="https://www.youtube.com/watch?v=Z1Yd7upQsXY"></video> -->
     </a-assets>
 
@@ -98,6 +99,10 @@
 
     <a-entity id="usb" gltf-model="#usb_flash_drive" position="-0.035 0.043 0.268" scale="0.096 0.096 0.096"
       rotation="34.815 42.660 -68.92" class="raycastable">
+    </a-entity>
+
+    <a-entity id="idcard" gltf-model="#id_card" position="0.125 0.565 -6.109" scale="0.073 0.073 0.073"
+    rotation="0 -91.17 88.417" class="raycastable">
     </a-entity>
 
     <a-entity id="whiteboard" gltf-model="#white_board" position="2.829 0 -5.753" scale="0.090 0.090 0.090" rotation=""
