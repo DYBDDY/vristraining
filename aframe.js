@@ -67,7 +67,7 @@ AFRAME.registerComponent("printer", {
   },
 });
 
-//印表機
+//便利貼
 AFRAME.registerComponent("passwordnote", {
   init: function () {
     var passwordnote = this.el;
@@ -128,38 +128,217 @@ AFRAME.registerComponent("windows", {
   },
 });
 
-//手機
+//詐騙電話
 AFRAME.registerComponent("unkownphonecall", {
   init: function () {
-    var windows = this.el;
-    // var panel = document.querySelector("#html-panel4");
+    var phone = this.el;
+    var panel = document.querySelector("#html-panel5");
     var phonesound = document.querySelector("#phsound");
-    windows.addEventListener("mouseenter", function () {
-      windows.object3D.scale.set(0.5, 0.5, 0.5);
+    phone.addEventListener("mouseenter", function () {
+      phone.object3D.scale.set(0.5, 0.5, 0.5);
+      phone.object3D.position.set(1.089, 0.494, -2.073);
       phonesound.components.sound.playSound();
     });
 
-    windows.addEventListener("mouseleave", function () {
-           windows.object3D.scale.set(0.265, 0.291 ,0.257);
+    phone.addEventListener("mouseleave", function () {
+      phone.object3D.position.set(1.089, 0.561, -2.073);
+      phone.object3D.scale.set(0.265, 0.291 ,0.257);
            phonesound.components.sound.stopSound();
     });
 
-    // windows.addEventListener("click", function () {
-    //   var isVisible = panel.getAttribute("visible") === true;
-    //   if (isVisible) {
-    //     // panel.setAttribute("visible", false);
-    //     // console.log(typeof(unlockdevicesound))
-    //     phonesound.components.sound.stopSound();
-    //     // console.log("printer hide");
+    phone.addEventListener("click", function () {
+      var isVisible = panel.getAttribute("visible") === true;
+      if (isVisible) {
+        panel.setAttribute("visible", false);
+        // console.log(typeof(unlockdevicesound))
+        // unlockdevicesound.components.sound.stopSound();
+        console.log("phone hide");
         
-    //   } else {
-    //     // panel.setAttribute("visible", true);
-    //     phonesound.components.sound.playSound();
-    //     // console.log("printer show");
-    //   }
-    // });
+      } else {
+        panel.setAttribute("visible", true);
+        // unlockdevicesound.components.sound.playSound();
+        console.log("phone show");
+      }
+    });
+  },
+});
 
-    // unlockdevicesound.addEventListener;
+
+
+//手機
+AFRAME.registerComponent("unlockedcellphone", {
+  init: function () {
+    var phone = this.el;
+    var panel = document.querySelector("#html-panel6");
+    phone.addEventListener("mouseenter", function () {
+      phone.object3D.scale.set(1.5,1.5,1.5);
+      // phone.object3D.position.set(1.089, 0.494, -2.073);
+      // phonesound.components.sound.playSound();
+    });
+
+    phone.addEventListener("mouseleave", function () {
+      phone.object3D.position.set(1.341,0.616,0.685);
+      phone.object3D.scale.set(1,1,1);
+          // wa phonesound.components.sound.stopSound();
+    });
+
+    phone.addEventListener("click", function () {
+      var isVisible = panel.getAttribute("visible") === true;
+      if (isVisible) {
+        panel.setAttribute("visible", false);
+        // console.log(typeof(unlockdevicesound))
+        // unlockdevicesound.components.sound.stopSound();
+        console.log("phone hide");
+        
+      } else {
+        panel.setAttribute("visible", true);
+        // unlockdevicesound.components.sound.playSound();
+        console.log("phone show");
+      }
+    });
+  },
+});
+
+//USB
+AFRAME.registerComponent("usbdrive", {
+  init: function () {
+    var usb = this.el;
+    var panel = document.querySelector("#html-panel7");
+    usb.addEventListener("mouseenter", function () {
+      usb.object3D.scale.set(0.2,0.2,0.2);
+      // phone.object3D.position.set(1.089, 0.494, -2.073);
+      // phonesound.components.sound.playSound();
+    });
+
+    usb.addEventListener("mouseleave", function () {
+      // phone.object3D.position.set(1.341,0.616,0.685);
+      usb.object3D.scale.set(0.096 ,0.096, 0.096);
+          //  phonesound.components.sound.stopSound();
+    });
+
+    usb.addEventListener("click", function () {
+      var isVisible = panel.getAttribute("visible") === true;
+      if (isVisible) {
+        panel.setAttribute("visible", false);
+        // console.log(typeof(unlockdevicesound))
+        // unlockdevicesound.components.sound.stopSound();
+        console.log("usb hide");
+        
+      } else {
+        panel.setAttribute("visible", true);
+        // unlockdevicesound.components.sound.playSound();
+        console.log("usb show");
+      }
+    });
+  },
+});
+
+//office CARD
+AFRAME.registerComponent("officecard", {
+  init: function () {
+    var card = this.el;
+    var panel = document.querySelector("#html-panel8");
+    card.addEventListener("mouseenter", function () {
+      card.object3D.scale.set(0.1,0.1,0.1);
+      // phone.object3D.position.set(1.089, 0.494, -2.073);
+      // phonesound.components.sound.playSound();
+    });
+
+    card.addEventListener("mouseleave", function () {
+      // phone.object3D.position.set(1.341,0.616,0.685);
+      card.object3D.scale.set(0.073,0.073,0.073);
+          //  phonesound.components.sound.stopSound();
+    });
+
+    card.addEventListener("click", function () {
+      var isVisible = panel.getAttribute("visible") === true;
+      if (isVisible) {
+        panel.setAttribute("visible", false);
+        // console.log(typeof(unlockdevicesound))
+        // unlockdevicesound.components.sound.stopSound();
+        console.log("card hide");
+        
+      } else {
+        panel.setAttribute("visible", true);
+        // unlockdevicesound.components.sound.playSound();
+        console.log("card show");
+      }
+    });
+  },
+});
+
+//White Board
+AFRAME.registerComponent("whiteboard", {
+  init: function () {
+    var whiteboard = this.el;
+    var panel = document.querySelector("#html-panel9");
+    whiteboard.addEventListener("mouseenter", function () {
+      whiteboard.object3D.scale.set(0.1,0.1,0.1);
+      // phone.object3D.position.set(1.089, 0.494, -2.073);
+      // phonesound.components.sound.playSound();
+    });
+
+    whiteboard.addEventListener("mouseleave", function () {
+      // phone.object3D.position.set(1.341,0.616,0.685);
+      whiteboard.object3D.scale.set(0.090, 0.090, 0.090);
+          //  phonesound.components.sound.stopSound();
+    });
+
+    whiteboard.addEventListener("click", function () {
+      var isVisible = panel.getAttribute("visible") === true;
+      if (isVisible) {
+        panel.setAttribute("visible", false);
+        // console.log(typeof(unlockdevicesound))
+        // unlockdevicesound.components.sound.stopSound();
+        console.log("board hide");
+        
+      } else {
+        panel.setAttribute("visible", true);
+        // unlockdevicesound.components.sound.playSound();
+        console.log("board show");
+      }
+    });
+  },
+});
+
+//順移按鈕1
+AFRAME.registerComponent("teleport", {
+  init: function () {
+    var teleport = this.el;
+    var you = document.querySelector("#rig")
+    // var camera = document.querySelector("#camera")
+    teleport.addEventListener("mouseenter", function () {
+      teleport.object3D.scale.set(0.018,0.018,0.018);
+    });
+    teleport.addEventListener("mouseleave", function () {
+      teleport.object3D.scale.set(0.012,0.012,0.012);
+    });
+    teleport.addEventListener("click", function () {
+      you.object3D.position.set(0 ,1.264, -0.502);
+      console.log(camera.object3D.position)
+      // camera.object3D.rotation.set(0,10.547,0)
+    });
+  },
+});
+
+//順移按鈕2
+AFRAME.registerComponent("teleport2", {
+  init: function () {
+    var teleport = this.el;
+    var you = document.querySelector("#rig")
+    var camera = document.querySelector("#camera")
+    teleport.addEventListener("mouseenter", function () {
+      teleport.object3D.scale.set(0.018,0.018,0.018);
+    });
+    teleport.addEventListener("mouseleave", function () {
+      teleport.object3D.scale.set(0.012,0.012,0.012);
+    });
+    teleport.addEventListener("click", function () {
+      you.object3D.position.set(0.618 ,1.206,-0.650);
+      camera.object3D.position.set(0.317 ,-0.070,-3.684);
+      console.log(camera.object3D.position)
+      // camera.object3D.rotation.set(0,10.547,0)
+    });
   },
 });
 
