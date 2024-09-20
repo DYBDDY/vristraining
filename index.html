@@ -12,7 +12,8 @@
 </head>
 
 <body>
-  <a-scene vr-mode-ui="enabled: true" environment cursor="rayOrigin: mouse; fuse: false"
+  
+  <a-scene webxr="referenceSpaceType: local" vr-mode-ui="enabled: true" environment cursor="rayOrigin: mouse; fuse: false"
     raycaster="objects: .raycastable">
     <a-sky src="./source/testimg/AdobeStock_269353732_Preview.jpeg" rotation="0 -90 0"></a-sky>
 
@@ -21,8 +22,10 @@
       <a-camera id="camera" wasd-controls="acceleration: 20" look-controls position="0 1.3 0">
       </a-camera>
     </a-entity> -->
+    <!-- position="0 1.264 2.704"  -->
     <a-entity id="rig" position="0 1.264 2.704" rotation="0 0 0">
-      <a-entity  id="camera" camera wasd-controls="acceleration: 10" look-controls>
+    <!-- <a-entity id="rig" position="0 1.264 2.704" rotation="0 0 0"></a-entity> -->
+      <a-entity  id="camera" geometry="primitive" camera wasd-controls="acceleration: 10" look-controls>
       </a-entity>
       <a-entity oculus-touch-controls="hand: left" laser-controls="hand: left" model="true"
         raycaster="objects: .raycastable" thumbstick-logging-move></a-entity>
@@ -74,8 +77,8 @@
     <!-- <a-entity id="officecomputermodel1" gltf-model="#officecomputermodel" class="raycastable"
       position="-1.057 0.552 -3.913" visible="true" scale="2.5 2.5 2.5" computerdesk></a-entity> -->
 
-    <a-entity id="printer" gltf-model="#printermodel" position="2.155 0.811 -2.133" scale="1.759 1.759 1.759"
-      rotation="-5.908 86.731 -2.219" class="raycastable" printer></a-entity>
+    <a-entity id="printer" gltf-model="#printermodel" position="1.559 0.811 -2.559" scale="1.759 1.759 1.759"
+      rotation="-5.908 174.81 -2.219" class="raycastable" printer>
     </a-entity>
 
     <a-entity id="passwordnote" gltf-model="#passwordnote" position="0.143 0.946 1.274" scale="0.494 0.494 0.494"
@@ -138,7 +141,7 @@
     </a-entity>
 
     <!-- 互動面板2 -->
-    <a-entity id="html-panel2" position="2.584 1.723 -1.587" rotation="0 88.100 0"
+    <a-entity id="html-panel2" position="1.140 1.723 -2.775" rotation="0 -179,7 0"
       geometry="primitive: plane; width: 2; height: 1" material="color:black"
       text="color: blue; align: center; value:; width: 2;" visible="false">
       <a-text value="Documents with confidential information" position="-0.800 0.383 0.027"

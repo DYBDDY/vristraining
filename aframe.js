@@ -334,8 +334,8 @@ AFRAME.registerComponent("teleport2", {
       teleport.object3D.scale.set(0.012,0.012,0.012);
     });
     teleport.addEventListener("click", function () {
-      you.object3D.position.set(0.618 ,1.206,-0.650);
-      camera.object3D.position.set(0.317 ,-0.070,-3.684);
+      you.object3D.position.set(0.618 ,1.206,-4.409);
+      // camera.object3D.position.set(0.317 ,-0.070,-3.684);
       console.log(camera.object3D.position)
       // camera.object3D.rotation.set(0,10.547,0)
     });
