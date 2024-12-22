@@ -45,6 +45,7 @@ AFRAME.registerComponent("printer", {
   init: function () {
     var printer = this.el;
     var panel = document.querySelector("#html-panel2");
+    var confidentailfilesound = document.querySelector("#cfsound");
     printer.addEventListener("mouseenter", function () {
       printer.object3D.scale.set(2.1, 2.1, 2.1);
       console.log("size changed to 3, 3, 3");
@@ -58,9 +59,11 @@ AFRAME.registerComponent("printer", {
       var isVisible = panel.getAttribute("visible") === true;
       if (isVisible) {
         panel.setAttribute("visible", false);
+        confidentailfilesound.components.sound.stopSound();
         console.log("printer hide");
       } else {
         panel.setAttribute("visible", true);
+        confidentailfilesound.components.sound.playSound();
         console.log("printer show");
       }
     });
@@ -72,6 +75,7 @@ AFRAME.registerComponent("passwordnote", {
   init: function () {
     var passwordnote = this.el;
     var panel = document.querySelector("#html-panel3");
+    var passwordsound = document.querySelector("#pssound");
     passwordnote.addEventListener("mouseenter", function () {
       passwordnote.object3D.scale.set(1, 1, 1);
     });
@@ -83,9 +87,11 @@ AFRAME.registerComponent("passwordnote", {
       var isVisible = panel.getAttribute("visible") === true;
       if (isVisible) {
         panel.setAttribute("visible", false);
+        passwordsound.components.sound.stopSound();
         console.log("printer hide");
       } else {
         panel.setAttribute("visible", true);
+        passwordsound.components.sound.playSound();
         console.log("printer show");
       }
     });
@@ -116,7 +122,6 @@ AFRAME.registerComponent("windows", {
         // console.log(typeof(unlockdevicesound))
         unlockdevicesound.components.sound.stopSound();
         console.log("printer hide");
-        
       } else {
         panel.setAttribute("visible", true);
         unlockdevicesound.components.sound.playSound();
@@ -134,6 +139,7 @@ AFRAME.registerComponent("unkownphonecall", {
     var phone = this.el;
     var panel = document.querySelector("#html-panel5");
     var phonesound = document.querySelector("#phsound");
+    var unknowncall = document.querySelector("#ucsound");
     phone.addEventListener("mouseenter", function () {
       phone.object3D.scale.set(0.5, 0.5, 0.5);
       phone.object3D.position.set(1.089, 0.494, -2.073);
@@ -142,44 +148,44 @@ AFRAME.registerComponent("unkownphonecall", {
 
     phone.addEventListener("mouseleave", function () {
       phone.object3D.position.set(1.089, 0.561, -2.073);
-      phone.object3D.scale.set(0.265, 0.291 ,0.257);
-           phonesound.components.sound.stopSound();
+      phone.object3D.scale.set(0.265, 0.291, 0.257);
+      phonesound.components.sound.stopSound();
     });
 
     phone.addEventListener("click", function () {
       var isVisible = panel.getAttribute("visible") === true;
       if (isVisible) {
         panel.setAttribute("visible", false);
+        unknowncall.components.sound.stopSound();
         // console.log(typeof(unlockdevicesound))
         // unlockdevicesound.components.sound.stopSound();
         console.log("phone hide");
-        
       } else {
         panel.setAttribute("visible", true);
         // unlockdevicesound.components.sound.playSound();
+        unknowncall.components.sound.playSound();
         console.log("phone show");
       }
     });
   },
 });
 
-
-
 //手機
 AFRAME.registerComponent("unlockedcellphone", {
   init: function () {
     var phone = this.el;
     var panel = document.querySelector("#html-panel6");
+    var unlockphonesound = document.querySelector("#upsound");
     phone.addEventListener("mouseenter", function () {
-      phone.object3D.scale.set(1.5,1.5,1.5);
+      phone.object3D.scale.set(1.5, 1.5, 1.5);
       // phone.object3D.position.set(1.089, 0.494, -2.073);
       // phonesound.components.sound.playSound();
     });
 
     phone.addEventListener("mouseleave", function () {
-      phone.object3D.position.set(1.341,0.616,0.685);
-      phone.object3D.scale.set(1,1,1);
-          // wa phonesound.components.sound.stopSound();
+      phone.object3D.position.set(1.341, 0.616, 0.685);
+      phone.object3D.scale.set(1, 1, 1);
+      // wa phonesound.components.sound.stopSound();
     });
 
     phone.addEventListener("click", function () {
@@ -187,12 +193,11 @@ AFRAME.registerComponent("unlockedcellphone", {
       if (isVisible) {
         panel.setAttribute("visible", false);
         // console.log(typeof(unlockdevicesound))
-        // unlockdevicesound.components.sound.stopSound();
+        unlockphonesound.components.sound.stopSound();
         console.log("phone hide");
-        
       } else {
         panel.setAttribute("visible", true);
-        // unlockdevicesound.components.sound.playSound();
+        unlockphonesound.components.sound.playSound();
         console.log("phone show");
       }
     });
@@ -204,16 +209,17 @@ AFRAME.registerComponent("usbdrive", {
   init: function () {
     var usb = this.el;
     var panel = document.querySelector("#html-panel7");
+    var unattendedusbsound = document.querySelector("#usbsound");
     usb.addEventListener("mouseenter", function () {
-      usb.object3D.scale.set(0.2,0.2,0.2);
+      usb.object3D.scale.set(0.2, 0.2, 0.2);
       // phone.object3D.position.set(1.089, 0.494, -2.073);
       // phonesound.components.sound.playSound();
     });
 
     usb.addEventListener("mouseleave", function () {
       // phone.object3D.position.set(1.341,0.616,0.685);
-      usb.object3D.scale.set(0.096 ,0.096, 0.096);
-          //  phonesound.components.sound.stopSound();
+      usb.object3D.scale.set(0.096, 0.096, 0.096);
+      //  phonesound.components.sound.stopSound();
     });
 
     usb.addEventListener("click", function () {
@@ -221,12 +227,11 @@ AFRAME.registerComponent("usbdrive", {
       if (isVisible) {
         panel.setAttribute("visible", false);
         // console.log(typeof(unlockdevicesound))
-        // unlockdevicesound.components.sound.stopSound();
+        unattendedusbsound.components.sound.stopSound();
         console.log("usb hide");
-        
       } else {
         panel.setAttribute("visible", true);
-        // unlockdevicesound.components.sound.playSound();
+        unattendedusbsound.components.sound.playSound();
         console.log("usb show");
       }
     });
@@ -238,16 +243,17 @@ AFRAME.registerComponent("officecard", {
   init: function () {
     var card = this.el;
     var panel = document.querySelector("#html-panel8");
+    var idsound = document.querySelector("#idsound");
     card.addEventListener("mouseenter", function () {
-      card.object3D.scale.set(0.1,0.1,0.1);
+      card.object3D.scale.set(0.1, 0.1, 0.1);
       // phone.object3D.position.set(1.089, 0.494, -2.073);
       // phonesound.components.sound.playSound();
     });
 
     card.addEventListener("mouseleave", function () {
       // phone.object3D.position.set(1.341,0.616,0.685);
-      card.object3D.scale.set(0.073,0.073,0.073);
-          //  phonesound.components.sound.stopSound();
+      card.object3D.scale.set(0.073, 0.073, 0.073);
+      //  phonesound.components.sound.stopSound();
     });
 
     card.addEventListener("click", function () {
@@ -255,12 +261,11 @@ AFRAME.registerComponent("officecard", {
       if (isVisible) {
         panel.setAttribute("visible", false);
         // console.log(typeof(unlockdevicesound))
-        // unlockdevicesound.components.sound.stopSound();
+        idsound.components.sound.stopSound();
         console.log("card hide");
-        
       } else {
         panel.setAttribute("visible", true);
-        // unlockdevicesound.components.sound.playSound();
+        idsound.components.sound.playSound();
         console.log("card show");
       }
     });
@@ -272,16 +277,17 @@ AFRAME.registerComponent("whiteboard", {
   init: function () {
     var whiteboard = this.el;
     var panel = document.querySelector("#html-panel9");
+    var whiteboardsound = document.querySelector("#wbsound");
     whiteboard.addEventListener("mouseenter", function () {
-      whiteboard.object3D.scale.set(0.1,0.1,0.1);
+      whiteboard.object3D.scale.set(0.1, 0.1, 0.1);
       // phone.object3D.position.set(1.089, 0.494, -2.073);
       // phonesound.components.sound.playSound();
     });
 
     whiteboard.addEventListener("mouseleave", function () {
       // phone.object3D.position.set(1.341,0.616,0.685);
-      whiteboard.object3D.scale.set(0.090, 0.090, 0.090);
-          //  phonesound.components.sound.stopSound();
+      whiteboard.object3D.scale.set(0.09, 0.09, 0.09);
+      //  phonesound.components.sound.stopSound();
     });
 
     whiteboard.addEventListener("click", function () {
@@ -289,12 +295,46 @@ AFRAME.registerComponent("whiteboard", {
       if (isVisible) {
         panel.setAttribute("visible", false);
         // console.log(typeof(unlockdevicesound))
-        // unlockdevicesound.components.sound.stopSound();
+        whiteboardsound.components.sound.stopSound();
         console.log("board hide");
-        
       } else {
         panel.setAttribute("visible", true);
-        // unlockdevicesound.components.sound.playSound();
+        whiteboardsound.components.sound.playSound();
+        console.log("board show");
+      }
+    });
+  },
+});
+
+//Phishing
+AFRAME.registerComponent("phishing", {
+  init: function () {
+    var phishing = this.el;
+    var panel = document.querySelector("#html-panel10");
+    var phishingsound = document.querySelector("#phishsound");
+    phishing.addEventListener("mouseenter", function () {
+      phishing.object3D.position.set(0.546, 0.832, -2.193);
+      phishing.object3D.scale.set(0.633, 0.633, 0.675);
+      // phone.object3D.position.set(1.089, 0.494, -2.073);
+      // phonesound.components.sound.playSound();
+    });
+
+    phishing.addEventListener("mouseleave", function () {
+      phishing.object3D.position.set(0.6, 0.832, -2.311);
+      phishing.object3D.scale.set(0.447, 0.447, 0.477);
+      //  phonesound.components.sound.stopSound();
+    });
+
+    phishing.addEventListener("click", function () {
+      var isVisible = panel.getAttribute("visible") === true;
+      if (isVisible) {
+        panel.setAttribute("visible", false);
+        // console.log(typeof(unlockdevicesound))
+        phishingsound.components.sound.stopSound();
+        console.log("board hide");
+      } else {
+        panel.setAttribute("visible", true);
+        phishingsound.components.sound.playSound();
         console.log("board show");
       }
     });
@@ -305,18 +345,26 @@ AFRAME.registerComponent("whiteboard", {
 AFRAME.registerComponent("teleport", {
   init: function () {
     var teleport = this.el;
-    var you = document.querySelector("#rig")
+    var you = document.querySelector("#rig");
+    const transition = document.getElementById("transition");
     // var camera = document.querySelector("#camera")
     teleport.addEventListener("mouseenter", function () {
-      teleport.object3D.scale.set(0.018,0.018,0.018);
+      teleport.object3D.scale.set(0.018, 0.018, 0.018);
     });
     teleport.addEventListener("mouseleave", function () {
-      teleport.object3D.scale.set(0.012,0.012,0.012);
+      teleport.object3D.scale.set(0.012, 0.012, 0.012);
     });
     teleport.addEventListener("click", function () {
-      you.object3D.position.set(0 ,1.264, -0.502);
-      console.log(camera.object3D.position)
+      // transition.classList.add("active");
+      you.object3D.position.set(0, 1.264, -0.502); // 移動位置
+      // you.object3D.position.set(0 ,1.264, -0.502);
+      console.log(camera.object3D.position);
       // camera.object3D.rotation.set(0,10.547,0)
+
+      // setTimeout(() => {
+       
+      //   transition.classList.remove("active"); // 移除轉場效果
+      // }, 500); // 與轉場時間一致
     });
   },
 });
@@ -325,18 +373,18 @@ AFRAME.registerComponent("teleport", {
 AFRAME.registerComponent("teleport2", {
   init: function () {
     var teleport = this.el;
-    var you = document.querySelector("#rig")
-    var camera = document.querySelector("#camera")
+    var you = document.querySelector("#rig");
+    var camera = document.querySelector("#camera");
     teleport.addEventListener("mouseenter", function () {
-      teleport.object3D.scale.set(0.018,0.018,0.018);
+      teleport.object3D.scale.set(0.018, 0.018, 0.018);
     });
     teleport.addEventListener("mouseleave", function () {
-      teleport.object3D.scale.set(0.012,0.012,0.012);
+      teleport.object3D.scale.set(0.012, 0.012, 0.012);
     });
     teleport.addEventListener("click", function () {
-      you.object3D.position.set(0.618 ,1.206,-4.409);
+      you.object3D.position.set(0.618, 1.206, -4.409);
       // camera.object3D.position.set(0.317 ,-0.070,-3.684);
-      console.log(camera.object3D.position)
+      console.log(camera.object3D.position);
       // camera.object3D.rotation.set(0,10.547,0)
     });
   },
