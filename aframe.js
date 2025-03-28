@@ -44,7 +44,7 @@ AFRAME.registerComponent("computerdesk", {
 AFRAME.registerComponent("printer", {
   init: function () {
     var printer = this.el;
-    var panel = document.querySelector("#html-panel2");
+    var panel = document.querySelector("#filepanel");
     var confidentailfilesound = document.querySelector("#cfsound");
     printer.addEventListener("mouseenter", function () {
       printer.object3D.scale.set(2.1, 2.1, 2.1);
@@ -74,7 +74,7 @@ AFRAME.registerComponent("printer", {
 AFRAME.registerComponent("passwordnote", {
   init: function () {
     var passwordnote = this.el;
-    var panel = document.querySelector("#html-panel3");
+    var panel = document.querySelector("#pspanel");
     var passwordsound = document.querySelector("#pssound");
     passwordnote.addEventListener("mouseenter", function () {
       passwordnote.object3D.scale.set(1, 1, 1);
@@ -102,7 +102,7 @@ AFRAME.registerComponent("passwordnote", {
 AFRAME.registerComponent("windows", {
   init: function () {
     var windows = this.el;
-    var panel = document.querySelector("#html-panel4");
+    var panel = document.querySelector("#uspanel");
     var unlockdevicesound = document.querySelector("#udsound");
     windows.addEventListener("mouseenter", function () {
       windows.object3D.position.set(0.1, 0.954, -2.146);
@@ -137,7 +137,7 @@ AFRAME.registerComponent("windows", {
 AFRAME.registerComponent("unkownphonecall", {
   init: function () {
     var phone = this.el;
-    var panel = document.querySelector("#html-panel5");
+    var panel = document.querySelector("#ukpanel");
     var phonesound = document.querySelector("#phsound");
     var unknowncall = document.querySelector("#ucsound");
     phone.addEventListener("mouseenter", function () {
@@ -174,7 +174,7 @@ AFRAME.registerComponent("unkownphonecall", {
 AFRAME.registerComponent("unlockedcellphone", {
   init: function () {
     var phone = this.el;
-    var panel = document.querySelector("#html-panel6");
+    var panel = document.querySelector("#uppanel");
     var unlockphonesound = document.querySelector("#upsound");
     phone.addEventListener("mouseenter", function () {
       phone.object3D.scale.set(1.5, 1.5, 1.5);
@@ -208,7 +208,7 @@ AFRAME.registerComponent("unlockedcellphone", {
 AFRAME.registerComponent("usbdrive", {
   init: function () {
     var usb = this.el;
-    var panel = document.querySelector("#html-panel7");
+    var panel = document.querySelector("#usbpanel");
     var unattendedusbsound = document.querySelector("#usbsound");
     usb.addEventListener("mouseenter", function () {
       usb.object3D.scale.set(0.2, 0.2, 0.2);
@@ -310,18 +310,18 @@ AFRAME.registerComponent("whiteboard", {
 AFRAME.registerComponent("phishing", {
   init: function () {
     var phishing = this.el;
-    var panel = document.querySelector("#html-panel10");
+    var panel = document.querySelector("#phishingpanel");
     var phishingsound = document.querySelector("#phishsound");
     phishing.addEventListener("mouseenter", function () {
       phishing.object3D.position.set(0.546, 0.832, -2.193);
-      phishing.object3D.scale.set(0.633, 0.633, 0.675);
+      phishing.object3D.scale.set(0.373, 0.373, 0.391);
       // phone.object3D.position.set(1.089, 0.494, -2.073);
       // phonesound.components.sound.playSound();
     });
 
     phishing.addEventListener("mouseleave", function () {
       phishing.object3D.position.set(0.6, 0.832, -2.311);
-      phishing.object3D.scale.set(0.447, 0.447, 0.477);
+      phishing.object3D.scale.set(0.273 ,0.273, 0.291);
       //  phonesound.components.sound.stopSound();
     });
 
@@ -350,11 +350,13 @@ AFRAME.registerComponent("teleport", {
     // var camera = document.querySelector("#camera")
     teleport.addEventListener("mouseenter", function () {
       teleport.object3D.scale.set(0.018, 0.018, 0.018);
+      
     });
     teleport.addEventListener("mouseleave", function () {
       teleport.object3D.scale.set(0.012, 0.012, 0.012);
     });
     teleport.addEventListener("click", function () {
+      console.log("sss")
       // transition.classList.add("active");
       you.object3D.position.set(0, 1.264, -0.502); // 移動位置
       // you.object3D.position.set(0 ,1.264, -0.502);

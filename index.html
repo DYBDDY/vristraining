@@ -23,9 +23,9 @@
       <a-entity id="camera" geometry="primitive" camera wasd-controls="acceleration: 10" look-controls>
       </a-entity>
       <a-entity oculus-touch-controls="hand: left" laser-controls="hand: left" model="true"
-          raycaster="objects: .raycastable" oculus-thumbstick-controls></a-entity>
-        <a-entity oculus-touch-controls="hand: right" laser-controls="hand: right" model="true"
-          raycaster="objects: .raycastable" thumbstick-logging-look></a-entity>
+        raycaster="objects: .raycastable" oculus-thumbstick-controls></a-entity>
+      <a-entity oculus-touch-controls="hand: right" laser-controls="hand: right" model="true"
+        raycaster="objects: .raycastable" thumbstick-logging-look></a-entity>
     </a-entity>
     <!-- <a-entity id="player" position="0 1.3 0">
       <a-entity id="head" camera wasd-controls look-controls></a-entity>
@@ -51,7 +51,14 @@
       <a-asset-item id="pothos_plant" src="./source/pothos_plant.glb"></a-asset-item>
       <a-asset-item id="pictures" src="./source/picture_frame.glb"></a-asset-item>
       <a-asset-item id="tvscreen" src="./source/tv_screen.glb"></a-asset-item>
-      <a-asset-item id="email" src="./source/phishing_email.glb"></a-asset-item>
+      <a-asset-item id="email" src="./source/phishingemail.glb"></a-asset-item>
+      <a-asset-item id="emailpanel" src="./source/phishingpanel3d.glb"></a-asset-item>
+      <a-asset-item id="confidentialpanel" src="./source/confidentialpanel3D.glb"></a-asset-item>
+      <a-asset-item id="paswwordpanel" src="./source/passwordpanel3d.glb"></a-asset-item>
+      <a-asset-item id="unlocksessionpanel" src="./source/unlocksessionthreatpanel3d.glb"></a-asset-item>
+      <a-asset-item id="unknowncallpanel" src="./source/unkownphonecallpanel3d.glb"></a-asset-item>
+      <a-asset-item id="unlockphonepanel" src="./source/unlockphonepanel3d.glb"></a-asset-item>
+      <a-asset-item id="unknownusbpanel" src="./source/usbpanel3d.glb"></a-asset-item>
     </a-assets>
     <!-- 圖片或影片 -->
     <a-assets>
@@ -72,6 +79,7 @@
     <!-- 燈光 -->
     <a-light type="ambient" color="#828278"></a-light>
     <a-light type="point" intensity="1" color="#ebebeb" position="2 4 2"></a-light>
+    <!-- <a-light type="point" intensity="1" color="#ebebeb" position="1.585 1.353 1.440"></a-light> -->
 
     <!-- 使用模型或圖片 -->
     <a-entity id="panel1" gltf-model="#panel" position="0 0 0" scale="1 1 1"></a-entity>
@@ -125,8 +133,43 @@
       rotation="0 87.180 0" class="raycastable">
     </a-entity>
 
-    <a-entity id="phishing" gltf-model="#email" position="0.600 0.832 -2.311" scale="0.447 0.447 0.477"
+    <a-entity id="phishing" gltf-model="#email" position="0.600 0.832 -2.311" scale="0.273 0.273 0.291"
       rotation="0 -24.68 0" class="raycastable" phishing>
+    </a-entity>
+
+    <a-entity id="phishingpanel" gltf-model="#emailpanel" position="0.279 1.331 -2.514" rotation="0 2.002 0"
+       visible="false">
+      <a-entity id="phishsound" sound="src: #phishingsound"></a-entity>
+    </a-entity>
+
+    <a-entity id="filepanel" gltf-model="#confidentialpanel" position="1.505 1.475 -2.643" rotation="0 179.85 0"
+       visible="false">
+      <a-entity id="cfsound" sound="src: #confidentailfilesound"></a-entity>
+    </a-entity>
+
+    <a-entity id="pspanel" gltf-model="#paswwordpanel" position="0.382 1.448 1.183" rotation="0 2.002 0"
+       visible="false">
+      <a-entity id="pssound" sound="src: #passwordsound"></a-entity>
+    </a-entity>
+
+    <a-entity id="uspanel" gltf-model="#unlocksessionpanel" position="0.279 1.331 -2.514" rotation="0 2.002 0"
+       visible="false">
+      <a-entity id="udsound" sound="src: #unlockdevicesound"></a-entity>
+    </a-entity>
+
+    <a-entity id="ukpanel" gltf-model="#unknowncallpanel" position="0.279 1.331 -2.514" rotation="0 2.002 0"
+       visible="false">
+      <a-entity id="ucsound" sound="src: #unknowncall"></a-entity>
+    </a-entity>
+
+    <a-entity id="uppanel" gltf-model="#unlockphonepanel" position="1.585 1.353 1.440" rotation="0 -179.993 0"
+      material="emissiveIntensity:10"  visible="false">
+      <a-entity id="upsound" sound="src: #unlockphonesound"></a-entity>
+    </a-entity>
+
+    <a-entity id="usbpanel" gltf-model="#unknownusbpanel" position="-0.046 1.353 1.109" rotation="0 -179.993 0"
+      material="emissiveIntensity:10"  visible="false">
+      <a-entity id="idsound" sound="src: #idcardsound"></a-entity>
     </a-entity>
 
     <a-sphere id="teleport" color="blue" radius="5" position="0.649 1.815 -1.365" scale="0.012 0.012 0.012"
@@ -138,7 +181,7 @@
 
 
     <!-- 互動面板1 -->
-    <a-entity id="html-panel1" position="0.279 1.723 -3.354" geometry="primitive: plane; width: 2; height: 1"
+    <!-- <a-entity id="html-panel1" position="0.279 1.723 -3.354" geometry="primitive: plane; width: 2; height: 1"
       material="color:black" text="color: blue; align: center; value:; width: 2; " visible="false">
       <a-text value="lol"></a-text>
       <a-text value="Phishing Email 4"></a-text>
@@ -146,10 +189,13 @@
       <a-text value="Be careful when clicking links"></a-text>
       <a-text value="Be cautious with mails"></a-text>
       <a-entity id="udsound" sound="src: #unlockdevicesound"></a-entity>
-    </a-entity>
+    </a-entity> -->
+
+
+
 
     <!-- 互動面板2 -->
-    <a-entity id="html-panel2" position="1.140 1.723 -2.775" rotation="0 -179,7 0"
+    <!-- <a-entity id="html-panel2" position="1.140 1.723 -2.775" rotation="0 -179,7 0"
       geometry="primitive: plane; width: 2; height: 1" material="color:black"
       text="color: blue; align: center; value:; width: 2;" visible="false">
       <a-text value="Documents with confidential information" position="-0.800 0.383 0.027"
@@ -157,14 +203,12 @@
       <a-text value="Dont leave laying around" position="-0.473 0.181 0.000" scale="0.409 0.409 0.409"></a-text>
       <a-text value="Keep in a locked drawer" position="-0.451 0 0.015" scale="0.409 0.409 0.409"></a-text>
       <a-entity id="cfsound" sound="src: #confidentailfilesound"></a-entity>
-    </a-entity>
+    </a-entity> -->
 
     <!-- 互動面板3 -->
-    <a-entity id="html-panel3" position="0.382 1.616 1.183" rotation="0 0.221 0"
+    <!-- <a-entity id="html-panel3" position="0.382 1.616 1.183" rotation="0 0.221 0"
       geometry="primitive: plane; width: 2; height: 1" material="color:black"
       text="color: blue; align: center; value:; width: 2;" visible="false">
-      <!-- <a-entity id="closebtn" gltf-model="#closebtn" position=" 0.907 0.421 -0.045" scale=" 0.165 0.165 0.165"
-        rotation="" class="raycastable" closebtn></a-entity> -->
       <a-text value="Password on a sticky note" position="0.036 0.383 0.030" scale="0.532 0.532 0.532"
         text="align: center;"></a-text>
       <a-text value="Dont write passwords down" position="0.017 0.181 0.000" scale="0.334 0.334 0.334"
@@ -176,15 +220,12 @@
       <a-text value="Consider using a password manager" position="0.028 -0.188 0.015" scale="0.334 0.334 0.334"
         text="align: center;"></a-text>
       <a-entity id="pssound" sound="src: #passwordsound"></a-entity>
-    </a-entity>
+    </a-entity> -->
 
     <!-- 互動面板4 -->
-    <a-entity id="html-panel4" position="0.382 1.616 -2.430" rotation="0 0.221 0"
+    <!-- <a-entity id="html-panel4" position="0.382 1.616 -2.430" rotation="0 0.221 0"
       geometry="primitive: plane; width: 2; height: 1" material="color:black"
       text="color: blue; align: center; value:; width: 2;" visible="false">
-      <!-- <a-entity id="closebtn" gltf-model="#closebtn" position=" 0.907 0.421 -0.045" scale=" 0.165 0.165 0.165"
-        rotation="" class="raycastable" closebtn>
-      </a-entity> -->
       <a-text value="Unlock session threat" position="0.036 0.383 0.030" scale="0.532 0.532 0.532"
         text="align: center;"></a-text>
       <a-text value="Dont leave unattended" position="0.017 0.181 0.000" scale="0.334 0.334 0.334"
@@ -194,30 +235,25 @@
       <a-text value="Use private screen filter" position="0.019 -0.167 0.015" scale="0.334 0.334 0.334"
         text="align: center;"></a-text>
       <a-entity id="udsound" sound="src: #unlockdevicesound"></a-entity>
-    </a-entity>
+    </a-entity> -->
 
     <!-- 互動面板5 -->
-    <a-entity id="html-panel5" position="0.382 1.616 -2.430" rotation="0 0.221 0"
+    <!-- <a-entity id="html-panel5" position="0.382 1.616 -2.430" rotation="0 0.221 0"
       geometry="primitive: plane; width: 2; height: 1" material="color:black"
       text="color: blue; align: center; value:; width: 2;" visible="false">
-      <!-- <a-entity id="closebtn" gltf-model="#closebtn" position=" 0.907 0.421 -0.045" scale=" 0.165 0.165 0.165"
-        rotation="" class="raycastable" closebtn>  </a-entity>-->
       <a-text value="Scam Call" position="0.036 0.383 0.030" scale="0.532 0.532 0.532" text="align: center;"></a-text>
       <a-text value="Be cautios with unkown numbers" position="0.017 0.181 0.000" scale="0.334 0.334 0.334"
         text="align: center;"></a-text>
       <a-text value="Check where the number is from" position="0.019 0.017 0.015" scale="0.334 0.334 0.334"
         text="align: center;"></a-text>
       <a-entity id="ucsound" sound="src: #unknowncall"></a-entity>
-    </a-entity>
+    </a-entity> -->
 
 
     <!-- 互動面板6 -->
-    <a-entity id="html-panel6" position="0.769 1.616 1.078" rotation="0 -179.993 0"
+    <!-- <a-entity id="html-panel6" position="0.769 1.616 1.078" rotation="0 -179.993 0"
       geometry="primitive: plane; width: 2; height: 1" material="color:black"
       text="color: blue; align: center; value:; width: 2;" visible="false">
-      <!-- <a-entity id="closebtn" gltf-model="#closebtn" position=" 0.907 0.421 -0.045" scale=" 0.165 0.165 0.165"
-        rotation="" class="raycastable" closebtn>
-      </a-entity> -->
       <a-text value="Unlocked device" position="0.036 0.383 0.030" scale="0.532 0.532 0.532"
         text="align: center;"></a-text>
       <a-text value="Lock after use" position="0.017 0.181 0.000" scale="0.334 0.334 0.334"
@@ -227,7 +263,7 @@
       <a-text value="Use strong passwords" position="0.019 -0.167 0.015" scale="0.334 0.334 0.334"
         text="align: center;"></a-text>
       <a-entity id="upsound" sound="src: #unlockphonesound"></a-entity>
-    </a-entity>
+    </a-entity> -->
 
     <!-- 互動面板7 -->
     <a-entity id="html-panel7" position="0.769 1.616 1.078" rotation="0 -179.993 0"
@@ -247,12 +283,9 @@
     </a-entity>
 
     <!-- 互動面板8 -->
-    <a-entity id="html-panel8" position="0.769 1.432 -6.252" rotation="0 -0.655 0"
+    <!-- <a-entity id="html-panel8" position="0.769 1.432 -6.252" rotation="0 -0.655 0"
       geometry="primitive: plane; width: 2; height: 1" material="color:black"
       text="color: blue; align: center; value:; width: 2;" visible="false">
-      <!-- <a-entity id="closebtn" gltf-model="#closebtn" position=" 0.907 0.421 -0.045" scale=" 0.165 0.165 0.165"
-        rotation="" class="raycastable" closebtn>
-      </a-entity> -->
       <a-text value="Unattended office access cards" position="0.036 0.383 0.030" scale="0.532 0.532 0.532"
         text="align: center;"></a-text>
       <a-text value="Dont leave unattended" position="0.017 0.181 0.000" scale="0.334 0.334 0.334"
@@ -260,33 +293,28 @@
       <a-text value="Keep on you at all times" position="0.019 0.017 0.015" scale="0.334 0.334 0.334"
         text="align: center;"></a-text>
       <a-entity id="idsound" sound="src: #idcardsound"></a-entity>
-    </a-entity>
+    </a-entity> -->
 
     <!-- 互動面板9 -->
-    <a-entity id="html-panel9" position="0.769 1.432 -6.252" rotation="0 -0.655 0"
+    <!-- <a-entity id="html-panel9" position="0.769 1.432 -6.252" rotation="0 -0.655 0"
       geometry="primitive: plane; width: 2; height: 1" material="color:black"
       text="color: blue; align: center; value:; width: 2;" visible="false">
-      <!-- <a-entity id="closebtn" gltf-model="#closebtn" position=" 0.907 0.421 -0.045" scale=" 0.165 0.165 0.165"
-        rotation="" class="raycastable" closebtn>
-      </a-entity> -->
       <a-text value="Whiteboards" position="0.036 0.383 0.030" scale="0.532 0.532 0.532" text="align: center;"></a-text>
       <a-text value="clean after use" position="0.017 0.181 0.000" scale="0.334 0.334 0.334"
         text="align: center;"></a-text>
       <a-entity id="wbsound" sound="src: #whiteboardsound"></a-entity>
-    </a-entity>
+    </a-entity> -->
 
     <!-- 互動面板10 -->
-    <a-entity id="html-panel10" position="0.382 1.616 -2.430" rotation="0 0.221 0"
+    <!-- <a-entity id="html-panel10" position="0.382 1.616 -2.430" rotation="0 0.221 0"
       geometry="primitive: plane; width: 2; height: 1" material="color:black"
       text="color: blue; align: center; value:; width: 2;" visible="false">
-      <!-- <a-entity id="closebtn" gltf-model="#closebtn" position=" 0.907 0.421 -0.045" scale=" 0.165 0.165 0.165"
-          rotation="" class="raycastable" closebtn>
-        </a-entity> -->
       <a-text value="Phishing" position="0.036 0.383 0.030" scale="0.532 0.532 0.532" text="align: center;"></a-text>
       <a-text value="Dont click suspicious email" position="0.017 0.181 0.000" scale="0.334 0.334 0.334"
         text="align: center;"></a-text>
       <a-entity id="phishsound" sound="src: #phishingsound"></a-entity>
-    </a-entity>
+    </a-entity> -->
+
     <!-- 互動面板backup -->
     <!-- <a-entity id="html-panelbk" position="-3.849 1.809 0.146" visible="true">
       <a-entity htmlembed="width: 1920; height: 1080" position="2.698 -0.039 -3.520" scale>
